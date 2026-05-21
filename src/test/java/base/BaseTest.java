@@ -1,9 +1,11 @@
 package base;
 
 import com.microsoft.playwright.*;
+import flows.CartFlows;
 import flows.LoginFlow;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
+import pages.CheckCarts;
 import pages.LoginPage;
 import utils.ConfigLoader;
 
@@ -15,6 +17,8 @@ public class BaseTest {
 
     protected LoginPage loginPage;
     protected LoginFlow loginFlow;
+    protected CheckCarts checkCarts;
+    protected CartFlows cartFlows;
 
     @BeforeTest
     public void setUp() {
@@ -36,6 +40,8 @@ public class BaseTest {
 
         loginPage = new LoginPage(page);
         loginFlow = new LoginFlow(loginPage);
+        checkCarts = new CheckCarts(page);
+        cartFlows = new CartFlows(checkCarts);
     }
 
     @AfterMethod
