@@ -11,14 +11,13 @@ public class LogoutPage {
 
     }
 
+    private String profileIcon = ".lucide.lucide-user";
 
-    private String profileIcon =".lucide.lucide-user";
-
-    public void logoutSection(){
+    public void logoutSection() {
 
         Locator profile = page.locator(profileIcon);
         profile.waitFor();
-        profile.click();
+        profile.hover();
 
         Locator logoutBtn = page.getByText("Sign out");
         logoutBtn.waitFor();

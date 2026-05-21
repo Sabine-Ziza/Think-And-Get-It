@@ -1,6 +1,7 @@
 package Authentication;
 
 import base.BaseTest;
+import flows.LoginFlow;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
@@ -10,18 +11,17 @@ import static org.testng.Assert.assertTrue;
 public class LoginTest extends BaseTest {
 
     @Test
-    public void validLogin(){
-     LoginAsAdmin();
-     assertThat(page).hasURL("https://think-and-get-it-frontend.onrender.com/home");
+    public void validLogin() {
 
+        loginFlow.loginAsAdmin();
+        assertThat(page).hasURL("https://think-and-get-it-frontend.onrender.com/home");
 
     }
-    @Test
-    public void invalidLogin(){
-        loginPage = new LoginPage(page);
-        loginPage.loginSection("sabine@gmail.com", "12345");
-        assertThat(page).hasURL("https://think-and-get-it-frontend.onrender.com/login");
 
+    @Test
+    public void invalidLogin() {
+        loginPage.loginSection("invalidEmail", "invalidPassword");
+        assertThat(page).hasURL("https://think-and-get-it-frontend.onrender.com/login");
 
 
     }
