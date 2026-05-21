@@ -3,10 +3,8 @@ package base;
 import com.microsoft.playwright.*;
 import flows.LoginFlow;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import pages.LoginPage;
-import pages.LogoutPage;
 import utils.ConfigLoader;
 
 public class BaseTest {
@@ -16,7 +14,6 @@ public class BaseTest {
     protected Playwright playwright;
 
     protected LoginPage loginPage;
-    protected LogoutPage logoutPage;
     protected LoginFlow loginFlow;
 
     @BeforeTest
@@ -38,7 +35,6 @@ public class BaseTest {
         );
 
         loginPage = new LoginPage(page);
-        logoutPage = new LogoutPage(page);
         loginFlow = new LoginFlow(loginPage);
     }
 
