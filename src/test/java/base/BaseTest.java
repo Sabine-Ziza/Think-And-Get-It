@@ -47,7 +47,7 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
         if (page != null) {
-            page.close();
+            page.pause();
             page = null;
         }
         if (browser != null) {
