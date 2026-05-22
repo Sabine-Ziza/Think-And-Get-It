@@ -2,10 +2,13 @@ package base;
 
 import com.microsoft.playwright.*;
 import flows.CartFlows;
+import flows.CheckoutFlow;
 import flows.LoginFlow;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import pages.CheckCarts;
+import pages.CheckoutPage;
 import pages.LoginPage;
 import utils.ConfigLoader;
 
@@ -16,11 +19,15 @@ public class BaseTest {
     protected Playwright playwright;
 
     protected LoginPage loginPage;
-    protected LoginFlow loginFlow;
+    protected  CheckoutPage checkoutPage;
     protected CheckCarts checkCarts;
-    protected CartFlows cartFlows;
 
-    @BeforeTest
+    protected LoginFlow loginFlow;
+    protected CartFlows cartFlows;
+    protected CheckoutFlow checkoutFlow;
+
+
+    @BeforeMethod
     public void setUp() {
 
         playwright = Playwright.create();
@@ -39,9 +46,12 @@ public class BaseTest {
         );
 
         loginPage = new LoginPage(page);
-        loginFlow = new LoginFlow(loginPage);
         checkCarts = new CheckCarts(page);
+        checkoutPage = new CheckoutPage(page);
+
+        loginFlow = new LoginFlow(loginPage);
         cartFlows = new CartFlows(checkCarts);
+        checkoutFlow = new CheckoutFlow(checkoutPage);
     }
 
     @AfterMethod

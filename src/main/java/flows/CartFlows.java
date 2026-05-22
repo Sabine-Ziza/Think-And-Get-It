@@ -15,7 +15,7 @@ public class CartFlows {
         checkCarts.selectFirstProduct();
         checkCarts.openCart();
         checkCarts.waitForOverlayToDisappear();
-        checkCarts.clickViewCart();
+//        checkCarts.clickViewCart();
     }
 }
 
